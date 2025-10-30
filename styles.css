@@ -298,3 +298,101 @@ body {
     width: 64px;
     height: 64px;
 }
+
+@keyframes glitch {
+    0% {transform: translate(0);}
+    20% {transform: translate(-2px, 2px);}
+    40% {transform: translate(-2px, -2px);}
+    60% {transform: translate(2px, 2px);}
+    80% {transform: translate(2px, -2px);}
+    100% {transform: translate(0);}
+}
+
+@keyframes sc-distort {
+    0%,100% {filter:hue-rotate(0deg) contrast(1);}
+    50% {filter: hue-rotate(180deg) contrast(1.5);}
+}
+
+@keyframes flicker {
+    0%, 100% {opacity:1;}
+    50% {opacity:0.3;}
+}
+
+.gl-overlay {
+    position:fixed;
+    top:0;
+    left:0;
+    width: 100%;
+    height: 100%;
+    background: repeating-linear-gradient(
+        0deg,
+        rgba(0,0,0,0.1),
+        rgba(0,0,0,0.1) 1px,
+        transparent 1px,
+        transparent 2px
+    );
+    pointer-events:none;
+    opacity:0;
+    z-index:9998;
+}
+
+.gl-overlay.active {
+    opacity:1;
+    animation:flicker 0.1s infinite;
+}
+
+.body.glitching {
+    animation: glitch 0.1s infinite, screen-distort 2s infinite;
+}
+
+.bsod {
+    position:fixed;
+    top:0;
+    left:0;
+    width: 100%;
+    height: 100%;
+    background: #0000aa;
+    color: #ffffff;
+    font-family: 'tomo';
+    display:none;
+    z-index: 100000;
+    padding: 40px;
+}
+
+.bsod.active {
+    display:block;
+}
+
+.bsod-content h1 {
+    font-size: 16px;
+    margin-bottom:20px;
+    font-weight:normal;
+}
+
+.bsod-content p {
+    font-size:14px;
+    line-height:1.5;
+}
+
+.bsod-err {
+    margin-top:40px;
+    padding:20px;
+    border:2px solid #ffffff;
+}
+
+/* you asked for this, siege person from the catacombs */
+
+.jumpscare-win { /* scary right? */
+    width: 400px !important;
+    height: 400px !important;
+    top: 50% !important;
+    left: 50% !important;
+    transform: translate(-50%, -50%) scale(0);
+    transition:transform 0.1s ease-out;
+    border: 4px solid #ff0000 !important;
+    z-index:9999;
+}
+
+.jumpscare-win.active {
+    transform:translate(-50%, -50%) scale(1);
+}

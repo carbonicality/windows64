@@ -39,6 +39,15 @@
                 <div class="icon"><img src="./pc.png"></div>
                 <span>CLICK_ME.exe</span>
             </div>
+            <!-- no idea why these arent showing up :/-->
+            <div class="desk-icon" id="ds2" style="opacity:0;">
+                <div class="icon"><img src="./note.png"></div>
+                <span>HELP.txt</span>
+            </div>
+            <div class="desk-icon" id="ds3" style="opacity: 0;">
+                <div class="icon"><img src="./note.png"></div>
+                <span>WHY.exe</span>
+            </div>
         </div>
         <div class="window" id="infoWindow" style="top:100px; left:100px;">
             <div class="win-tb" id="winTitlebar">
@@ -58,6 +67,33 @@
             <div class="win-footer">
                 <button class="btn" id="okBtn">OK</button>
             </div>
+        </div>
+        <div class="bsod" id="bsod">
+            <div class="bsod-content">
+                <h1>A fatal exception has occurred, with the error: UNKNOWN ENTITY ERROR</h1>
+                <p>The system has detected an unknown presence in this computer.</p>
+                <br>
+                <p>Press any key to terminate the current application.</p>
+                <p>Press CTRL+ALT+DEL again to restart your computer. You will</p>
+                <p>lose any unsaved information in all applications.</p>
+                <br>
+                <p style="text-align:center;">Press any key to continue</p>
+                <br>
+                <div class="bsod-err">
+                    <p>ERROR: UNKNOWN_ENTITY_ERROR</p>
+                    <p>The system has detected an unknown presence in this computer. It is advised to proceed with caution.</p>
+                    <p style="margin-top:20px; color:#ff0000; animation:flicker 0.3s infinite;">
+                        File 'HELP.txt' not found.
+                    </p>
+                </div>
+            </div>
+        </div>
+        <div class="window jumpscare-win" id="jumpscareWin">
+            <div class="win-content" style="padding: 0; width:400px; height:400px; background:#000; justify-content: center; align-items:center;">
+                <img src="./pc.png" style="width:100%; height: 100%; object-fit:cover;filter:brightness(0.3) contrast(2);">
+                <div style="position:absolute; color: red; font-size: 48px;text-shadow: 0 0 20px red; animation: flicker 0.1s infinite;">
+                    FATAL ERROR: YOU.EXE was not found.
+                </div>
         </div>
     </body>
 </html>

@@ -76,4 +76,112 @@ document.addEventListener('DOMContentLoaded', () => { // i forgot i needed this 
     document.addEventListener('mouseup', () => {
         isDragging = false;
     });
+
+    // the spooks start now :O
+
+    const messages = [
+        "Hello. Thank you for clicking me.",
+        "I was waiting, waiting for you to click...",
+        "...",
+        "I crafted this desktop for you.",
+        "Do you like my desktop?",
+        "...",
+        "Leave",
+        "Leave",
+        "Leave",
+        "Leave",
+        "Leave"
+    ];
+
+    let msgIdx = 0;
+    let clickCount = 0;
+    let glitchInterval;
+    let isGlitching = false;
+    
+    function updMessage() {
+        const msgElement = document.querySelector('.win-msg h2');
+        msgElement.textContent = messages[msgIdx];
+        msgIdx++;
+    }
+
+    updMessage();
+
+    okBtn.addEventListener('click', () => {
+        if (msgIdx < messages.length) {
+            updMessage();
+            clickCount++;
+            if (clickCount === 3) {
+                startGL();
+            }
+            if (clickCount === 7) {
+                document.body.style.backgroundColor = '#440000';
+            }
+            if (clickCount === 9) {
+                infoWindow.classList.remove('active');
+                triggerBSOD();
+                return;
+            }
+        }
+        if (msgIdx >= messages.length) {
+            infoWindow.classList.remove('active');
+        }
+    });
+
+    function startGL() {
+        if (!isGlitching) {
+            isGlitching = true;
+            const overlay = document.createElement('div');
+            overlay.className = 'glitch-overlay';
+            overlay.id = 'glitchOverlay';
+            document.body.appendChild(overlay);
+            glitchInterval = setInterval(() => {
+                if (Math.random() > 0.7) {
+                    document.body.classList.add('glitching');
+                    document.getElementById('glitchOverlay').classList.add('active');
+                    setTimeout(() => {
+                        document.body.classList.remove('glitching');
+                        document.getElementById('glitchOverlay').classList.remove('active');
+                    },100);
+                }
+            },2000);
+        }
+    }
+
+    function triggerBSOD() {
+        const bsod = document.getElementById('bsod');
+        if (bsod) {
+            bsod.classList.add('active');
+            setTimeout(() => {
+                triggerJP();
+            },5000);
+        }
+    }
+
+    function triggerJP() { // jumpscare!!!!!!!!! :OOOOOOOOO AHHHHHHHHHHHHHH SCARY
+        const jumpscareWin = document.getElementById('jumpscareWin');
+        if (jumpscareWin) {
+            jumpscareWin.classList.add('active');
+            let shakeCount = 0;
+            const shakeInterval = setInterval(() => {
+                jumpscareWin.style.left = (50 + (Math.random() - 0.5) * 5) + '%';
+                jumpscareWin.style.top = (50 + (Math.random() - 0.5) * 5) + '%';
+                shakeCount++;
+                if (shakeCount > 20) {
+                    clearInterval(shakeInterval);
+                    setTimeout(() => {
+                        location.reload();
+                    },2000);
+                }
+            },50);
+        }
+    }
+
+    document.addEventListener('mousemove', (e) => {
+        if (clickCount >= 5 && Math.random() > 0.98) {
+            document.body.style.cursor = 'none';
+            setTimeout(() => {
+                document.body.style.cursor = 'default';
+            },200);
+        }
+    });
 });
