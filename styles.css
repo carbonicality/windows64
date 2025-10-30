@@ -1,0 +1,300 @@
+/* credit to windows 93 for these fonts, i ripped it from there */
+@font-face {
+    font-family: 'px-sans';
+    src: url('./fonts/px-sans.ttf');
+}
+
+@font-face {
+    font-family: 'px-icons';
+    src: url('./fonts/px-icons.ttf');
+}
+
+@font-face {
+    font-family: 'tomo';
+    src: url('./fonts/tomo.woff2');
+}
+
+body {
+    font-family: 'px-sans';
+    height: 100vh;
+    background-color: #008776;
+    overflow: hidden;
+}
+
+.taskbar {
+    position:fixed;
+    bottom:0;
+    left:0;
+    right: 0;
+    height:28px;
+    background:#c0c0c0;
+    border-top: 2px solid #ffffff;
+    display:flex;
+    align-items:center;
+    padding:2px;
+    box-shadow:inset 1px 1px 0 #dfdfdf;
+}
+
+.start-btn {
+    height: 22px;
+    padding: 0 20px 0 8px;
+    background: #c0c0c0;
+    border: 2px solid;
+    border-color: #ffffff #404040 #404040 #ffffff;
+    display:flex;
+    align-items:center;
+    justify-content:flex-start;
+    gap:4px;
+    cursor:pointer;
+    font-size:9px;
+    position:relative;
+    box-shadow: inset 1px 1px 0 #dfdfdf, inset -1px -1px 0 #808080;
+    min-width: 54px;
+    user-select:none;
+}
+
+.start-btn:active {
+    border-color: #404040 #ffffff #ffffff #404040;
+    padding: 1px 19px 0 9px;
+    box-shadow: inset -1px -1px 0 #dfdfdf, inset 1px 1px 0 #808080;
+}
+
+.start-btn img {
+    width:16px;
+    height:16px;
+}
+
+.start-menu {
+    position:absolute;
+    bottom:30px;
+    left:2px;
+    width:170px;
+    background: #c0c0c0;
+    border: 2px solid;
+    border-color:#ffffff #404040 #404040 #ffffff;
+    display:none;
+    box-shadow:2px 2px 4px rgba(0,0,0,0.2);
+}
+
+.start-menu.active {
+    display:block;
+}
+
+.start-menu-itms {
+    display:block;
+}
+
+.st-item {
+    display:flex;
+    align-items:center;
+    gap:8px;
+    padding:3px 4px;
+    cursor:pointer;
+    font-size:8px;
+    position:relative;
+    min-height:15px;
+}
+
+.st-item img,
+.st-item .icon {
+    width: 16px;
+    height: 16px;
+    flex-shrink: 0;
+    font-size: 14px;
+}
+
+.st-item:hover {
+    background:#00b3ff;
+    color:#ffffff;
+}
+
+.separator {
+    height: 1px;
+    background: #808080;
+    margin: 2px 4px;
+    border-bottom: 1px solid #ffffff;
+}
+
+.taskbar-div {
+    width: 2px;
+    height: 22px;
+    background: #808080;
+    border-left: 1px solid #ffffff;
+    margin: 0 3px;
+    box-shadow: 1px 0 0 #ffffff;
+}
+
+.taskbar-right {
+    margin-left: auto;
+    display:flex;
+    align-items:center;
+    gap:4px;
+}
+
+.sys-tray {
+    display:flex;
+    align-items:center;
+    gap:2px;
+    padding:1px 4px;
+    border:1px solid;
+    border-color:#808080 #ffffff #ffffff #808080;
+    height: 18px;
+    background:#c0c0c0;
+}
+
+.sys-tray .icon {
+    width: 16px;
+    height: 16px;
+}
+
+.clock {
+    padding: 1px 6px;
+    border: 1px solid;
+    border-color: #808080 #ffffff #ffffff #808080;
+    font-size: 10px;
+    height:18px;
+    display:flex;
+    align-items:center;
+    background:#c0c0c0;
+}
+
+.icon {
+    display:flex;
+    align-items:center;
+    justify-content:center;
+    font-size: 24px;
+}
+
+.s-icon {
+    font-size: 14px;
+    width: 16px;
+    height: 16px;
+}
+
+.desktop {
+    padding:10px;
+    display:flex;
+    flex-direction:column;
+    gap:20px;
+}
+
+.desk-icon {
+    width: 70px;
+    display:flex;
+    flex-direction:column;
+    align-items:center;
+    gap:4px;
+    cursor:pointer;
+    padding:4px;
+}
+
+.desk-icon .icon {
+    font-size:32px;
+    width:32px;
+    height:32px;
+}
+
+.desk-icon span {
+    font-size:10px;
+    color:#ffffff;
+    text-align:center;
+    text-shadow:1px 1px 2px rgba(0,0,0,0.8);
+}
+
+.window {
+    position:absolute;
+    width:480px;
+    background:#c0c0c0;
+    border:2px solid;
+    border-color: #ffffff #404040 #404040 #ffffff;
+    /*box-shadow: 2px 2px 8px rgba(0,0,0,0.3);*/
+    display:none;
+}
+
+.window.active {
+    display:block;
+}
+
+.win-tb {
+    height:20px;
+    background:linear-gradient(to right, #000080, #1084d0);
+    display:flex;
+    align-items: center;
+    padding: 2px 4px;
+    cursor:move;
+    user-select: none;
+}
+
+.win-title {
+    color: #ffffff;
+    font-size: 10px;
+    flex: 1;
+}
+
+.win-ctrls {
+    display: flex;
+    gap: 2px;
+}
+
+.win-btn {
+    width: 14px;
+    height: 14px;
+    background: #c0c0c0;
+    border: 1px solid;
+    border-color: #ffffff #000000 #000000 #ffffff;
+    font-size: 9px;
+    cursor:pointer;
+}
+
+.win-content {
+    padding: 16px;
+    display:flex;
+    gap:16px;
+    font-size:8px;
+    align-items:flex-start;
+}
+
+.win-icon {
+    font-size: 32px;
+    width: 32px;
+    height: 32px;
+    margin-right: 15px;
+}
+
+.win-msg h2 {
+    font-size:9px;
+    margin-bottom: 8px;
+}
+
+.win-footer {
+    display:flex;
+    justify-content:center;
+    padding: 0 16px 16px 16px;
+}
+
+.btn {
+    min-width: 75px;
+    height: 23px;
+    background:#c0c0c0;
+    border: 2px solid;
+    border-color: #ffffff #404040 #404040 #ffffff;
+    font-size: 8px;
+    font-family: 'px-sans';
+    cursor:pointer;
+    box-shadow: inset 1px 1px 0 #dfdfdf, inset -1px -1px 0 #808080;
+}
+
+.btn:active {
+    border-color: #404040 #ffffff #ffffff #404040;
+    padding: 1px 0 0 1px;
+}
+
+.desk-icon img {
+    width:64px;
+    height:64px;
+}
+
+.win-icon img {
+    width: 64px;
+    height: 64px;
+}

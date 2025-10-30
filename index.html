@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <title>Windows 64</title>
+        <link rel="stylesheet" href="./styles.css">
+        <script src="./script.js"></script>
+    </head>
+    <body>
+        <div class="taskbar">
+            <div class="start-btn" id="startBtn">
+                <span>Start</span>
+            </div>
+            <div class="start-menu" id="startMenu">
+                <div class="start-menu-itms">
+                    <div class="st-item">
+                        <span>Fullscreen</span>
+                    </div>
+                    <div class="separator"></div>
+                    <div class="st-item">
+                        <span>Reboot</span>
+                    </div>
+                    <div class="st-item">
+                        <span>Shutdown</span>
+                    </div>
+                </div>
+            </div>
+            <div class="taskbar-div"></div>
+            <div class="taskbar-right">
+                <div class="sys-tray">
+                    <div class="icon s-icon"></div> <!-- lmao idk what to put here -->
+                </div>
+                <div class="clock" id="clock">00:00</div>
+            </div>
+        </div>
+        <div class="desktop">
+            <div class="desk-icon" id="infoIcon">
+                <div class="icon"><img src="./pc.png"></div>
+                <span>CLICK_ME.exe</span>
+            </div>
+        </div>
+        <div class="window" id="infoWindow" style="top:100px; left:100px;">
+            <div class="win-tb" id="winTitlebar">
+                <div class="win-title">
+                    <span>Info</span>
+                </div>
+                <div class="win-ctrls">
+                    <div class="win-btn" id="closeBtn" style="font-family:'px-icons'">e</div> <!-- the e correlates to an X icon-->
+                </div>
+            </div>
+            <div class="win-content">
+                <div class="win-icon"><img src="./pc.png"></div>
+                <div class="win-msg">
+                    <h2>MESSAGE</h2>
+                </div>
+            </div>
+            <div class="win-footer">
+                <button class="btn" id="okBtn">OK</button>
+            </div>
+        </div>
+    </body>
+</html>
