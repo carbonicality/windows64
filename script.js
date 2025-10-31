@@ -50,7 +50,7 @@ document.addEventListener('DOMContentLoaded', () => { // i forgot i needed this 
         infoWindow.classList.remove('active');
     });
 
-    const winTitlebar = document.getElementById('winTitlebar');
+    /* const winTitlebar = document.getElementById('winTitlebar');
     let isDragging = false;
     let currentX;
     let currentY;
@@ -75,7 +75,7 @@ document.addEventListener('DOMContentLoaded', () => { // i forgot i needed this 
 
     document.addEventListener('mouseup', () => {
         isDragging = false;
-    });
+    }); */
 
     // the spooks start now :O
 
@@ -234,5 +234,36 @@ document.addEventListener('DOMContentLoaded', () => { // i forgot i needed this 
             const windowId = this.getAttribute('data-window');
             document.getElementById(windowId).classList.remove('active');
         });
+    });
+
+    function makeWinDraggable(windowElement) {
+        const titlebar = windowElement.querySelector('.win-tb');
+        let isDragging = false;
+        let initialX, initialY;
+        titlebar.addEventListener('mousedown', (e) => {
+            isDragging = true;
+            initialX = e.clientX - windowElement.offsetLeft;
+            initialY = e.clientY - windowElement.offsetTop;
+            titlebar.style.cursor = 'move';
+        });
+        document.addEventListener('mousemove', (e) => {
+            if (isDragging) {
+                e.preventDefault();
+                const currentX = e.clientX - initialX;
+                const currentY = e.clientY - initialY;
+                windowElement.style.left = currentX + 'px';
+                windowElement.style.top = currentY + 'px';
+            }
+        });
+        document.addEventListener('mouseup', () => {
+            if (isDragging) {
+                isDragging = false;
+                titlebar.style.cursor = 'move';
+            }
+        });
+    }
+    
+    document.querySelectorAll('.window').forEach(window => {
+        makeWinDraggable(window);
     });
 });

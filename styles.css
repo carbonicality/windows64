@@ -19,6 +19,7 @@ body {
     height: 100vh;
     background-color: #008776;
     overflow: hidden;
+    cursor: url('./cursors/cursor.png') 0 0, auto;
 }
 
 .taskbar {
@@ -395,4 +396,67 @@ body {
 
 .jumpscare-win.active {
     transform:translate(-50%, -50%) scale(1);
+}
+
+.notepad-content {
+    background: #fff;
+    color: #000;
+    font-family: 'tomo';
+    padding: 8px;
+    min-height: 200px;
+    border: 1px solid;
+    border-color: #808080 #ffffff #ffffff #808080;
+    overflow-y: auto;
+    max-height: 400px;
+    display: block !important;
+    flex-direction: column !important;
+}
+
+.notepad-content p {
+    margin: 0;
+    line-height: 1.4;
+    font-size: 11px;
+}
+
+.notepad-content br {
+    display:block;
+    content: "";
+    margin: 0.5em 0;
+}
+
+.notepad-menu {
+    background: #c0c0c0;
+    border-bottom: 1px solid #808080;
+    display:flex;
+    padding: 2px 4px;
+    font-size: 8px;
+}
+
+.notepad-itm {
+    padding: 2px 8px;
+    cursor:default;
+    user-select:none;
+}
+
+.notepad-itm:hover {
+    background: #00b3ff;
+    color: #ffffff;
+}
+
+.start-btn,
+.st-item,
+.desk-icon,
+.win-btn,
+.btn,
+.notepad-itm,
+.close-win {
+    cursor: url('./cursors/click.png') 0 0, pointer;
+}
+
+.win-tb {
+    cursor: url('./cursors/cursor.png') 0 0, move;
+}
+
+.win-tb:active {
+    cursor: url('./cursors/cursor.png') 0 0, grabbing;
 }
