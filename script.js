@@ -113,13 +113,33 @@ document.addEventListener('DOMContentLoaded', () => { // i forgot i needed this 
             if (clickCount === 3) {
                 startGL();
             }
+            if (clickCount === 4) {
+                setTimeout(() => {
+                    if (diaryIcons.diary1) diaryIcons.diary1.style.opacity = '1';
+                },3000);
+            }
+            if (clickCount === 5) {
+                setTimeout(() => {
+                    if (diaryIcons.diary2) diaryIcons.diary2.style.opacity = '1';
+                },2000);
+            }
+            if (clickCount === 6) {
+                setTimeout(() => {
+                    if (diaryIcons.diary3) diaryIcons.diary3.style.opacity = '1';
+                },4000);
+            }
             if (clickCount === 7) {
                 document.body.style.backgroundColor = '#440000';
             }
+            if (clickCount === 8) {
+                setTimeout(() => {
+                    if (diaryIcons.diary4) diaryIcons.diary4.style.opacity = '1';
+                },1000);
+            }
             if (clickCount === 9) {
                 infoWindow.classList.remove('active');
-                triggerBSOD();
-                return;
+                /*triggerBSOD();
+                return; bro im ngl that BSOD was annoying as hell and super unscary */
             }
         }
         if (msgIdx >= messages.length) {
@@ -183,5 +203,36 @@ document.addEventListener('DOMContentLoaded', () => { // i forgot i needed this 
                 document.body.style.cursor = 'default';
             },200);
         }
+    });
+
+    // diary file stuff
+    const diaryIcons = {
+        diary1: document.getElementById('diary1'),
+        diary2: document.getElementById('diary2'),
+        diary3: document.getElementById('diary3'),
+        diary4: document.getElementById('diary4')
+    };
+
+    document.getElementById('diary1')?.addEventListener('dblclick', () => {
+        document.getElementById('diary1Window').classList.add('active');
+    });
+
+    document.getElementById('diary2')?.addEventListener('dblclick', () => {
+        document.getElementById('diary2Window').classList.add('active');
+    })
+
+    document.getElementById('diary3')?.addEventListener('dblclick', () => {
+        document.getElementById('diary3Window').classList.add('active');
+    });
+
+    document.getElementById('diary4')?.addEventListener('dblclick', () => {
+        document.getElementById('diary4Window').classList.add('active');
+    });
+
+    document.querySelectorAll('.close-win').forEach(btn => {
+        btn.addEventListener('click', function() {
+            const windowId = this.getAttribute('data-window');
+            document.getElementById(windowId).classList.remove('active');
+        });
     });
 });
