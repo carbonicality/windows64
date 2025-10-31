@@ -3,6 +3,18 @@ document.addEventListener('DOMContentLoaded', () => { // i forgot i needed this 
     const startBtn = document.getElementById('startBtn');
     const startMenu = document.getElementById('startMenu');
 
+    const runDialog = document.getElementById('runDialog');
+    const runInput = document.getElementById('runInput');
+    const runOkBtn = document.getElementById('runOkBtn');
+    const runCancelBtn = document.getElementById('runCancelBtn');
+    const runCloseBtn = document.getElementById('runCloseBtn');
+
+    const taskMgr = document.getElementById('taskMgr');
+    const processList = document.getElementById('processList');
+    const endBtn = document.getElementById('endBtn');
+    const tmClose = document.getElementById('tmClose');
+    runDialog.classList.remove('active');
+
     startBtn.addEventListener('click', (e) => {
         e.stopPropagation();
         startMenu.classList.toggle('active');
@@ -26,12 +38,12 @@ document.addEventListener('DOMContentLoaded', () => { // i forgot i needed this 
     updClock();
     setInterval(updClock, 1000);
 
-    document.querySelectorAll('.st-item').forEach(item => {
+    /* document.querySelectorAll('.st-item').forEach(item => {
         item.addEventListener('click', (e) => {
             const text = item.querySelector('span').textContent;
             console.log('clicked:', text); // lets remove this in a bit once we add our app logic
         });
-    });
+    }); */
 
     const infoIcon = document.getElementById('infoIcon');
     const infoWindow = document.getElementById('infoWindow');
@@ -266,4 +278,213 @@ document.addEventListener('DOMContentLoaded', () => { // i forgot i needed this 
     document.querySelectorAll('.window').forEach(window => {
         makeWinDraggable(window);
     });
+
+    /* let isCorrupted = false;
+    document.querySelectorAll('.st-item').forEach(item => {
+        item.addEventListener('click', (e) => {
+            const text = item.querySelector('span').textContent;
+            if (text === 'Fullscreen') {
+                if (document.documentElement.requestFullscreen) {
+                    document.documentElement.requestFullscreen();
+                }
+                startMenu.classList.remove('active');
+            }
+            if (text === 'Reboot') {
+                startMenu.classList.remove('active');
+                rebootSys();
+            }
+            if (text === 'Shutdown') {
+                startMenu.classList.remove('active');
+                shutdownSys();
+            }
+        });
+    });
+
+    function rebootSys() {
+        document.body.style.transition = 'opacity 1s';
+        document.body.style.opacity = '0';
+        setTimeout(() => {
+            isCorrupted = true;
+            location.reload();
+        },1000);
+    }
+
+    function shutdownSys() {
+        const shutdownScreen = document.getElementById('shutdownScreen');
+        shutdownScreen.classList.add('active');
+        setTimeout(() => {
+            shutdownScreen.querySelector('h1').textContent = 'Shutdown cancelled.'
+            shutdownScreen.querySelector('.shutdown-spinner').style.display = 'none';
+            setTimeout(() => {
+                shutdownScreen.querySelector('h1').textContent = 'You cannot leave.';
+                setTimeout(() => {
+                    shutdownScreen.classList.remove('active');
+                    startGL();
+                    document.body.style.backgroundColor = '#440000';
+                },2000);
+            },1500);
+        },3000);
+    } */
+
+    // lets add some better event listeners and stuff
+    document.getElementById('fullscreenItem')?.addEventListener('click', () => {
+        if (document.documentElement.requestFullscreen) {
+            document.documentElement.requestFullscreen();
+        }
+        startMenu.classList.remove('active');
+    });
+
+    document.getElementById('rebootItem')?.addEventListener('click', () => {
+        startMenu.classList.remove('active');
+        rebootSys();
+    });
+
+    document.getElementById('shutdownItem')?.addEventListener('click', () => {
+        startMenu.classList.remove('active');
+        shutdownSys();
+    });
+
+    function rebootSys() {
+        document.body.style.transition = 'opacity background-color 1s';
+        document.body.style.opacity = '0';
+        document.body.style.backgroundColor = '#000';
+        setTimeout(() => {
+            location.reload();
+        },1000);
+    }
+
+    function shutdownSys() {
+        const shutdownScreen = document.getElementById('shutdownScreen');
+        shutdownScreen.classList.add('active');
+        setTimeout(() => {
+            shutdownScreen.querySelector('h1').textContent = 'Shutdown cancelled.';
+            shutdownScreen.querySelector('.shutdown-spinner').style.display = 'none';
+            setTimeout(() => {
+                shutdownScreen.querySelector('h1').textContent = 'You cannot leave.';
+                setTimeout(() => {
+                    shutdownScreen.classList.remove('active');
+                    startGL();
+                    document.body.style.backgroundColor = '#440000';
+                },2000);
+            },1500);
+        },3000);
+    }
+
+    document.getElementById('runItem')?.addEventListener('click', () => {
+        runDialog.classList.add('active');
+        startMenu.classList.remove('active');
+        console.log('runitem clicked');
+        setTimeout(() => runInput.focus(), 100);
+    });
+
+    runCloseBtn.addEventListener('click', () => {
+        runDialog.classList.remove('active');
+    });
+
+    runCancelBtn.addEventListener('click', () => {
+        runDialog.classList.remove('active');
+    });
+
+    runOkBtn.addEventListener('click', () => {
+        execCmd(runInput.value.toLowerCase().trim());
+    });
+
+    runInput.addEventListener('keypress', (e) => {
+        if (e.key === 'Enter') {
+            execCmd(runInput.value.toLowerCase().trim());
+        }
+    });
+
+    function execCmd(cmd) {
+        if (cmd === 'taskmgr' || cmd === 'taskmgr.exe') {
+            runDialog.classList.remove('active');
+            runInput.value = '';
+            openTM();
+        } else if (cmd === 'help') {
+            runDialog.classList.remove('active');
+            runInput.value = '';
+            alert('Available commands: taskmgr, help, leave');
+        } else if (cmd === 'leave') {
+            runDialog.classList.remove('active');
+            runInput.value = '';
+            alert('You cannot leave.'); //spoopy right
+            startGL();
+        } else {
+            alert(`'${cmd}' is not recognised as an internal or external command.`);
+            runInput.value = '';
+        }
+    }
+
+    let processes = [
+        {name:'explorer.exe', pid:1024, cpu:'2%', memory:'12,450K'},
+        {name:'system.dll', pid:4, cpu:'0%', memory:'284K'},
+        {name:'WATCHING.exe', pid:0O00, cpu:'1000%', memory:'0B', corrupted: true}, // dawg why arent 'octal literals' allowed
+        {name:'host.exe', pid:832, cpu:'1%', memory:'3,450K'},
+        {name:'WAITING.exe', pid:0O00, cpu:'1000%', memory:'0B', corrupted:true},
+        {name:'desktop.exe', pid:512, cpu:'5%', memory:'2,100K'}
+    ];
+
+    let selectedProc = null;
+
+    function openTM() {
+        taskMgr.classList.add('active');
+        renderProcs();
+    }
+
+    function renderProcs() {
+        processList.innerHTML = '';
+        processes.forEach((proc,index) => {
+            const row = document.createElement('div');
+            row.className = 'process-row' + (proc.corrupted ? ' corrupted' : '');
+            row.innerHTML = `
+            <span>${proc.name}</span>
+            <span>${proc.pid}</span>
+            <span>${proc.cpu}</span>
+            <span>${proc.memory}</span>`;
+            row.addEventListener('click', () => {
+                document.querySelectorAll('.process-row').forEach(r => r.classList.remove('selected'));
+                row.classList.add('selected');
+                selectedProc = index;
+            });
+            processList.appendChild(row);
+        });
+    }
+
+    tmClose.addEventListener('click', () => {
+        taskMgr.classList.remove('active');
+    });
+
+    endBtn.addEventListener('click', () => {
+        if (selectedProc !== null) {
+            const proc = processes[selectedProc];
+            if (proc.corrupted) {
+                alert(`ACCESS DENIED: Cannot terminate ${proc.name}`);
+                const newCorrupted = {
+                    name: `UNKNOWN_${Math.floor(Math.random() * 9999)}.exe`,
+                    pid: Math.floor(Math.random() * 9999),
+                    cpu: Math.floor(Math.random() * 50) + '%',
+                    memory: Math.floor(Math.random() * 10000) + ' K',
+                    corrupted: true
+                };
+                processes.push(newCorrupted);
+                renderProcs();
+                startGL();
+            } else {
+                processes.splice(selectedProc, 1);
+                selectedProc = null;
+                renderProcs();
+            }
+        }
+    });
+
+    setInterval(() => {
+        if (taskMgr.classList.contains('active')) {
+            processes.forEach(proc => {
+                if (proc.corrupted) {
+                    proc.cpu = Math.floor(Math.random() * 30) + 10 + '%';
+                }
+            });
+            renderProcs();
+        }
+    },2000);
 });

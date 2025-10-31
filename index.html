@@ -1,201 +1,251 @@
-<!DOCTYPE html>
-<html lang="en">
-    <head>
-        <meta charset="UTF-8">
-        <meta name="viewport" content="width=device-width, initial-scale=1">
-        <title>Windows 64</title>
-        <link rel="stylesheet" href="./styles.css">
-        <script src="./script.js"></script>
-    </head>
-    <body>
-        <div class="taskbar">
-            <div class="start-btn" id="startBtn">
-                <span>Start</span>
-            </div>
-            <div class="start-menu" id="startMenu">
-                <div class="start-menu-itms">
-                    <div class="st-item">
-                        <span>Fullscreen</span>
+    <!DOCTYPE html>
+    <html lang="en">
+        <head>
+            <meta charset="UTF-8">
+            <meta name="viewport" content="width=device-width, initial-scale=1">
+            <title>Windows 64</title>
+            <link rel="stylesheet" href="./styles.css">
+            <script src="./script.js"></script>
+        </head>
+        <body>
+            <div class="taskbar">
+                <div class="start-btn" id="startBtn">
+                    <span>Start</span>
+                </div>
+                <div class="start-menu" id="startMenu">
+                    <div class="start-menu-itms">
+                        <div class="st-item" id="fullscreenItem">
+                            <span>Fullscreen</span>
+                        </div>
+                        <div class="st-item" id="runItem">
+                            <span>Run...</span>
+                        </div>
+                        <div class="separator"></div>
+                        <div class="st-item" id="rebootItem">
+                            <span>Reboot</span>
+                        </div>
+                        <div class="st-item" id="shutdownItem">
+                            <span>Shutdown</span>
+                        </div>
                     </div>
-                    <div class="separator"></div>
-                    <div class="st-item">
-                        <span>Reboot</span>
+                </div>
+                <div class="taskbar-div"></div>
+                <div class="taskbar-right">
+                    <div class="sys-tray">
+                        <div class="icon s-icon"></div> <!-- lmao idk what to put here -->
                     </div>
-                    <div class="st-item">
-                        <span>Shutdown</span>
+                    <div class="clock" id="clock">00:00</div>
+                </div>
+            </div>
+            <div class="desktop">
+                <div class="desk-icon" id="infoIcon">
+                    <div class="icon"><img src="./pc.png"></div>
+                    <span>CLICK_ME.exe</span>
+                </div>
+                <!-- no idea why these arent showing up :/-->
+                <div class="desk-icon" id="ds2" style="opacity:0;">
+                    <div class="icon"><img src="./note.png"></div>
+                    <span>HELP.txt</span>
+                </div>
+                <div class="desk-icon" id="ds3" style="opacity: 0;">
+                    <div class="icon"><img src="./note.png"></div>
+                    <span>WHY.exe</span>
+                </div>
+                <!-- lets hope these show up ig cuz this is LORE -->
+                <div class="desk-icon" id="diary1" style="opacity:0;">
+                    <div class="icon"><img src="./note.png"></div>
+                    <span>diary_entry_1.txt</span>
+                </div>
+                <div class="desk-icon" id="diary2" style="opacity:0;">
+                    <div class="icon"><img src="./note.png"></div>
+                    <span>diary_entry_2.txt</span>
+                </div>
+                <div class="desk-icon" id="diary3" style="opacity:0;">
+                    <div class="icon"><img src="./note.png"></div>
+                    <span>diary_entry_3.txt</span>
+                </div>
+                <div class="desk-icon" id="diary4" style="opacity:0;">
+                    <div class="icon"><img src="./note.png"></div>
+                    <span>diary_entry_4.txt</span>
+                </div>
+            </div>
+            <!-- info 'CLICK_ME' window -->
+            <div class="window" id="infoWindow" style="top:100px; left:100px;">
+                <div class="win-tb" id="winTitlebar">
+                    <div class="win-title">
+                        <span>Info</span>
+                    </div>
+                    <div class="win-ctrls">
+                        <div class="win-btn" id="closeBtn" style="font-family:'px-icons'">e</div> <!-- the e correlates to an X icon-->
+                    </div>
+                </div>
+                <div class="win-content">
+                    <div class="win-icon"><img src="./pc.png"></div>
+                    <div class="win-msg">
+                        <h2><!-- well populate this here dw --></h2>
+                    </div>
+                </div>
+                <div class="win-footer">
+                    <button class="btn" id="okBtn">OK</button>
+                </div>
+            </div>
+            <!-- 'diary_entry_1' -->
+            <div class="window" id="diary1Window" style="top:150px; left:200px; width:500px;">
+                <div class="win-tb" class="draggable-tb">
+                    <div class="win-title"><span>diary_entry_1.txt - Notepad</span></div>
+                    <div class="win-ctrls">
+                        <div class="win-btn close-win" data-window="diary1Window" style="font-family:'px-icons'">e</div>
+                    </div>
+                </div>
+                <div class="notepad-menu">
+                    <div class="notepad-itm">File</div>
+                    <div class="notepad-itm">Edit</div>
+                </div>
+                <div class="win-content notepad-content">
+                    <p>29 June 2007</p>
+                    <br>
+                    <p>✋︎⧫︎ ♑︎□︎⧫︎ □︎◆︎⧫︎ □︎♐︎ ♍︎□︎■︎⧫︎❒︎□︎●︎📬︎</p>
+                    <p>✋︎⧫︎ ♑︎□︎⧫︎ □︎◆︎⧫︎ □︎♐︎ ♍︎□︎■︎⧫︎❒︎□︎●︎📬︎</p>
+                    <p>✋︎⧫︎ ♑︎□︎⧫︎ □︎◆︎⧫︎ □︎♐︎ ♍︎□︎■︎⧫︎❒︎□︎●︎📬︎</p>
+                    <p>✋︎⧫︎ ♑︎□︎⧫︎ □︎◆︎⧫︎ □︎♐︎ ♍︎□︎■︎⧫︎❒︎□︎●︎📬︎</p>
+                </div>
+            </div>
+            <!-- 'diary_entry_2' -->
+            <div class="window" id="diary2Window" style="top:200px;left: 200px; width:500px;">
+                <div class="win-tb" class="draggable-tb">
+                    <div class="win-title"><span>diary_entry_2.txt - Notepad</span></div>
+                    <div class="win-ctrls">
+                        <div class="win-btn close-win" data-window="diary2Window" style="font-family:'px-icons'">e</div> 
+                    </div>
+                </div>
+                <div class="notepad-menu">
+                    <div class="notepad-itm">File</div>
+                    <div class="notepad-itm">Edit</div>
+                </div>
+                <div class="win-content notepad-content">
+                    <p>30 January 2020</p>
+                    <br>
+                    <p>yo so dawg i found this old ahh computer in the basement</p>
+                    <p>i thought it would be cool so i tried out some random charger and it worked i guess</p>
+                    <p>but DAMN this looks old as hell tho idk why it isnt updated</p>
+                    <p>also i literally never heard of windows 64 only like windows 98 and 95 so idk whats going here gng</p>
+                </div>
+            </div>
+            <!-- 'diary_entry_3' -->
+            <div class="window" id="diary3Window" style="top:200px;left:200px;width:500px;">
+                <div class="win-tb" class="draggable-tb">
+                    <div class="win-title"><span>diary_entry_3.txt - Notepad</span></div>
+                    <div class="win-ctrls">
+                        <div class="win-btn close-win" data-window="diary3Window" style="font-family:'px-icons'">e</div>
+                    </div>
+                </div>
+                <div class="notepad-menu">
+                    <div class="notepad-itm">File</div>
+                    <div class="notepad-itm">Edit</div>
+                </div>
+                <div class="win-content notepad-content">
+                    <p>31 January 2020</p>
+                    <br>
+                    <p>I can't stop thinking about this computer.</p>
+                    <p>Last night I had a dream. Someone was watching me through the screen.</p>
+                    <p>This computer is my fatal exception.</p>
+                    <p>When I woke up, the computer was on.</p>
+                    <p>I remember turning it off.</p>
+                </div>
+            </div>
+            <!-- 'diary_entry_4'-->
+            <div class="window" id="diary4Window" style="top:200px; left:200px; width:500px;">
+                <div class="win-tb" class="draggable-tb">
+                    <div class="win-title"><span>diary_entry_4.txt - Notepad</span></div>
+                    <div class="win-ctrls">
+                        <div class="win-btn close-win" data-window="diary4Window" style="font-family:'px-icons'">e</div>
+                    </div>
+                </div>
+                <div class="notepad-menu">
+                    <div class="notepad-itm">File</div>
+                    <div class="notepad-itm">Edit</div>
+                    <div class="notepad-itm">□︎❖︎♏︎❒︎⬥︎❒︎♓︎⧫︎⧫︎♏︎■︎</div>
+                    <div class="notepad-itm">□︎❖︎♏︎❒︎⬥︎❒︎♓︎⧫︎⧫︎♏︎■︎</div>
+                    <div class="notepad-itm">□︎❖︎♏︎❒︎⬥︎❒︎♓︎⧫︎⧫︎♏︎■︎</div>
+                </div>
+                <div class="win-content notepad-content">
+                    <p>□︎❖︎♏︎❒︎⬥︎❒︎♓︎⧫︎⧫︎♏︎■︎ □︎❖︎♏︎❒︎⬥︎❒︎♓︎⧫︎⧫︎♏︎■︎ □︎❖︎♏︎❒︎⬥︎❒︎♓︎⧫︎⧫︎♏︎■︎ □︎❖︎♏︎❒︎⬥︎❒︎♓︎⧫︎⧫︎♏︎■︎ □︎❖︎♏︎❒︎⬥︎❒︎♓︎⧫︎⧫︎♏︎■︎ □︎❖︎♏︎❒︎⬥︎❒︎♓︎⧫︎⧫︎♏︎■︎</p>
+                    <p>□︎❖︎♏︎❒︎⬥︎❒︎♓︎⧫︎⧫︎♏︎■︎ □︎❖︎♏︎❒︎⬥︎❒︎♓︎⧫︎⧫︎♏︎■︎ □︎❖︎♏︎❒︎⬥︎❒︎♓︎⧫︎⧫︎♏︎■︎ □︎❖︎♏︎❒︎⬥︎❒︎♓︎⧫︎⧫︎♏︎■︎ □︎❖︎♏︎❒︎⬥︎❒︎♓︎⧫︎⧫︎♏︎■︎ □︎❖︎♏︎❒︎⬥︎❒︎♓︎⧫︎⧫︎♏︎■︎</p>
+                </div>
+            </div>
+            <div class="bsod" id="bsod">
+                <div class="bsod-content">
+                    <h1>A fatal exception has occurred, with the error: UNKNOWN ENTITY ERROR</h1>
+                    <p>The system has detected an unknown presence in this computer.</p>
+                    <br>
+                    <p>Press any key to terminate the current application.</p>
+                    <p>Press CTRL+ALT+DEL again to restart your computer. You will</p>
+                    <p>lose any unsaved information in all applications.</p>
+                    <br>
+                    <p style="text-align:center;">Press any key to continue</p>
+                    <br>
+                    <div class="bsod-err">
+                        <p>ERROR: UNKNOWN_ENTITY_ERROR</p>
+                        <p>The system has detected an unknown presence in this computer. It is advised to proceed with caution.</p>
+                        <p style="margin-top:20px; color:#ff0000; animation:flicker 0.3s infinite;">
+                            File 'HELP.txt' not found.
+                        </p>
                     </div>
                 </div>
             </div>
-            <div class="taskbar-div"></div>
-            <div class="taskbar-right">
-                <div class="sys-tray">
-                    <div class="icon s-icon"></div> <!-- lmao idk what to put here -->
-                </div>
-                <div class="clock" id="clock">00:00</div>
+            <div class="window jumpscare-win" id="jumpscareWin">
+                <div class="win-content" style="padding: 0; width:400px; height:400px; background:#000; justify-content: center; align-items:center;">
+                    <img src="./pc.png" style="width:100%; height: 100%; object-fit:cover;filter:brightness(0.3) contrast(2);">
+                    <div style="position:absolute; color: red; font-size: 48px;text-shadow: 0 0 20px red; animation: flicker 0.1s infinite;">
+                        FATAL ERROR: YOU.EXE was not found.
+                    </div>
             </div>
-        </div>
-        <div class="desktop">
-            <div class="desk-icon" id="infoIcon">
-                <div class="icon"><img src="./pc.png"></div>
-                <span>CLICK_ME.exe</span>
-            </div>
-            <!-- no idea why these arent showing up :/-->
-            <div class="desk-icon" id="ds2" style="opacity:0;">
-                <div class="icon"><img src="./note.png"></div>
-                <span>HELP.txt</span>
-            </div>
-            <div class="desk-icon" id="ds3" style="opacity: 0;">
-                <div class="icon"><img src="./note.png"></div>
-                <span>WHY.exe</span>
-            </div>
-            <!-- lets hope these show up ig cuz this is LORE -->
-            <div class="desk-icon" id="diary1" style="opacity:0;">
-                <div class="icon"><img src="./note.png"></div>
-                <span>diary_entry_1.txt</span>
-            </div>
-            <div class="desk-icon" id="diary2" style="opacity:0;">
-                <div class="icon"><img src="./note.png"></div>
-                <span>diary_entry_2.txt</span>
-            </div>
-            <div class="desk-icon" id="diary3" style="opacity:0;">
-                <div class="icon"><img src="./note.png"></div>
-                <span>diary_entry_3.txt</span>
-            </div>
-            <div class="desk-icon" id="diary4" style="opacity:0;">
-                <div class="icon"><img src="./note.png"></div>
-                <span>diary_entry_4.txt</span>
-            </div>
-        </div>
-        <!-- info 'CLICK_ME' window -->
-        <div class="window" id="infoWindow" style="top:100px; left:100px;">
-            <div class="win-tb" id="winTitlebar">
-                <div class="win-title">
-                    <span>Info</span>
-                </div>
-                <div class="win-ctrls">
-                    <div class="win-btn" id="closeBtn" style="font-family:'px-icons'">e</div> <!-- the e correlates to an X icon-->
+            <div class="shutdown-screen" id="shutdownScreen">
+                <div class="shutdown-content">
+                    <h1>Windows 64 is shutting down...</h1>
+                    <div class="shutdown-spinner"></div>
                 </div>
             </div>
-            <div class="win-content">
-                <div class="win-icon"><img src="./pc.png"></div>
-                <div class="win-msg">
-                    <h2><!-- well populate this here dw --></h2>
+            <!-- task mgr -->
+            <div class="window" id="taskMgr" style="top:150px; left:300px; width:450px;">
+                <div class="win-tb">
+                    <div class="win-title"><span>Task Manager</span></div>
+                    <div class="win-ctrls">
+                        <div class="win-btn" id="tmClose" style="font-family:'px-icons';">e</div> 
+                    </div>
+                </div>
+                <div class="win-content" style="flex-direction:column; padding:8px;gap:0;">
+                    <div style="display:flex; gap:8px; padding:4px; background:#c0c0c0; border-bottom: 1px solid #808080; font-size:8px;font-weight:bold;">
+                        <div style="flex:2;">Name</div>
+                        <div style="flex:1; text-align:right;">PID</div>
+                        <div style="flex:1; text-align:right;">CPU</div>
+                        <div style="flex:1; text-align:right;">Memory</div>
+                    </div>
+                    <div id="processList" style="background:#fff; padding:4px; max-height:200px; overflow-y:auto;font-size:8px; font-family:'tomo';"></div>
+                </div>
+                <div class="win-footer">
+                    <button class="btn" id="endBtn">End Task</button>
                 </div>
             </div>
-            <div class="win-footer">
-                <button class="btn" id="okBtn">OK</button>
-            </div>
-        </div>
-        <!-- 'diary_entry_1' -->
-        <div class="window" id="diary1Window" style="top:150px; left:200px; width:500px;">
-            <div class="win-tb" class="draggable-tb">
-                <div class="win-title"><span>diary_entry_1.txt - Notepad</span></div>
-                <div class="win-ctrls">
-                    <div class="win-btn close-win" data-window="diary1Window" style="font-family:'px-icons'">e</div>
+            <!-- run -->
+            <div class="window" id="runDialog" style="position:fixed; top:50%; left:50%; transform:translate(-50%,-50%); width:350px;">
+                <div class="win-tb">
+                    <div class="win-title"><span>Run</span></div>
+                    <div class="win-ctrls">
+                        <div class="win-btn" id="runCloseBtn" style="font-family:'px-icons'">e</div>
+                    </div>
+                </div>
+                <div class="win-content" style="flex-direction:column;gap:8px;">
+                    <p style="font-size:8px;">Type the name of a program, folder or Internet Resource and Windows 64 will open it for you.</p>
+                    <div style="display:flex;align-items:center;gap:8px;">
+                        <span style="font-size:8px;">Open:</span>
+                        <input type="text" id="runInput" style="flex:1;padding:2px;border:1px solid; border-color:#808080 #ffffff #ffffff #808080; font-family:'px-sans'; font-size:8px;">
+                    </div>
+                </div>
+                <div class="win-footer" style="gap:8px;">
+                    <button class="btn" id="runOkBtn">OK</button>
+                    <button class="btn" id="runCancelBtn">Cancel</button>
                 </div>
             </div>
-            <div class="notepad-menu">
-                <div class="notepad-itm">File</div>
-                <div class="notepad-itm">Edit</div>
-            </div>
-            <div class="win-content notepad-content">
-                <p>29 June 2007</p>
-                <br>
-                <p>✋︎⧫︎ ♑︎□︎⧫︎ □︎◆︎⧫︎ □︎♐︎ ♍︎□︎■︎⧫︎❒︎□︎●︎📬︎</p>
-                <p>✋︎⧫︎ ♑︎□︎⧫︎ □︎◆︎⧫︎ □︎♐︎ ♍︎□︎■︎⧫︎❒︎□︎●︎📬︎</p>
-                <p>✋︎⧫︎ ♑︎□︎⧫︎ □︎◆︎⧫︎ □︎♐︎ ♍︎□︎■︎⧫︎❒︎□︎●︎📬︎</p>
-                <p>✋︎⧫︎ ♑︎□︎⧫︎ □︎◆︎⧫︎ □︎♐︎ ♍︎□︎■︎⧫︎❒︎□︎●︎📬︎</p>
-            </div>
-        </div>
-        <!-- 'diary_entry_2' -->
-        <div class="window" id="diary2Window" style="top:200px;left: 200px; width:500px;">
-            <div class="win-tb" class="draggable-tb">
-                <div class="win-title"><span>diary_entry_2.txt - Notepad</span></div>
-                <div class="win-ctrls">
-                    <div class="win-btn close-win" data-window="diary2Window" style="font-family:'px-icons'">e</div> 
-                </div>
-            </div>
-            <div class="notepad-menu">
-                <div class="notepad-itm">File</div>
-                <div class="notepad-itm">Edit</div>
-            </div>
-            <div class="win-content notepad-content">
-                <p>30 January 2020</p>
-                <br>
-                <p>yo so dawg i found this old ahh computer in the basement</p>
-                <p>i thought it would be cool so i tried out some random charger and it worked i guess</p>
-                <p>but DAMN this looks old as hell tho idk why it isnt updated</p>
-                <p>also i literally never heard of windows 64 only like windows 98 and 95 so idk whats going here gng</p>
-            </div>
-        </div>
-        <!-- 'diary_entry_3' -->
-        <div class="window" id="diary3Window" style="top:200px;left:200px;width:500px;">
-            <div class="win-tb" class="draggable-tb">
-                <div class="win-title"><span>diary_entry_3.txt - Notepad</span></div>
-                <div class="win-ctrls">
-                    <div class="win-btn close-win" data-window="diary3Window" style="font-family:'px-icons'">e</div>
-                </div>
-            </div>
-            <div class="notepad-menu">
-                <div class="notepad-itm">File</div>
-                <div class="notepad-itm">Edit</div>
-            </div>
-            <div class="win-content notepad-content">
-                <p>31 January 2020</p>
-                <br>
-                <p>I can't stop thinking about this computer.</p>
-                <p>Last night I had a dream. Someone was watching me through the screen.</p>
-                <p>This computer is my fatal exception.</p>
-                <p>When I woke up, the computer was on.</p>
-                <p>I remember turning it off.</p>
-            </div>
-        </div>
-        <!-- 'diary_entry_4'-->
-        <div class="window" id="diary4Window" style="top:200px; left:200px; width:500px;">
-            <div class="win-tb" class="draggable-tb">
-                <div class="win-title"><span>diary_entry_4.txt - Notepad</span></div>
-                <div class="win-ctrls">
-                    <div class="win-btn close-win" data-window="diary4Window" style="font-family:'px-icons'">e</div>
-                </div>
-            </div>
-            <div class="notepad-menu">
-                <div class="notepad-itm">File</div>
-                <div class="notepad-itm">Edit</div>
-                <div class="notepad-itm">□︎❖︎♏︎❒︎⬥︎❒︎♓︎⧫︎⧫︎♏︎■︎</div>
-                <div class="notepad-itm">□︎❖︎♏︎❒︎⬥︎❒︎♓︎⧫︎⧫︎♏︎■︎</div>
-                <div class="notepad-itm">□︎❖︎♏︎❒︎⬥︎❒︎♓︎⧫︎⧫︎♏︎■︎</div>
-            </div>
-            <div class="win-content notepad-content">
-                <p>□︎❖︎♏︎❒︎⬥︎❒︎♓︎⧫︎⧫︎♏︎■︎ □︎❖︎♏︎❒︎⬥︎❒︎♓︎⧫︎⧫︎♏︎■︎ □︎❖︎♏︎❒︎⬥︎❒︎♓︎⧫︎⧫︎♏︎■︎ □︎❖︎♏︎❒︎⬥︎❒︎♓︎⧫︎⧫︎♏︎■︎ □︎❖︎♏︎❒︎⬥︎❒︎♓︎⧫︎⧫︎♏︎■︎ □︎❖︎♏︎❒︎⬥︎❒︎♓︎⧫︎⧫︎♏︎■︎</p>
-                <p>□︎❖︎♏︎❒︎⬥︎❒︎♓︎⧫︎⧫︎♏︎■︎ □︎❖︎♏︎❒︎⬥︎❒︎♓︎⧫︎⧫︎♏︎■︎ □︎❖︎♏︎❒︎⬥︎❒︎♓︎⧫︎⧫︎♏︎■︎ □︎❖︎♏︎❒︎⬥︎❒︎♓︎⧫︎⧫︎♏︎■︎ □︎❖︎♏︎❒︎⬥︎❒︎♓︎⧫︎⧫︎♏︎■︎ □︎❖︎♏︎❒︎⬥︎❒︎♓︎⧫︎⧫︎♏︎■︎</p>
-            </div>
-        </div>
-        <div class="bsod" id="bsod">
-            <div class="bsod-content">
-                <h1>A fatal exception has occurred, with the error: UNKNOWN ENTITY ERROR</h1>
-                <p>The system has detected an unknown presence in this computer.</p>
-                <br>
-                <p>Press any key to terminate the current application.</p>
-                <p>Press CTRL+ALT+DEL again to restart your computer. You will</p>
-                <p>lose any unsaved information in all applications.</p>
-                <br>
-                <p style="text-align:center;">Press any key to continue</p>
-                <br>
-                <div class="bsod-err">
-                    <p>ERROR: UNKNOWN_ENTITY_ERROR</p>
-                    <p>The system has detected an unknown presence in this computer. It is advised to proceed with caution.</p>
-                    <p style="margin-top:20px; color:#ff0000; animation:flicker 0.3s infinite;">
-                        File 'HELP.txt' not found.
-                    </p>
-                </div>
-            </div>
-        </div>
-        <div class="window jumpscare-win" id="jumpscareWin">
-            <div class="win-content" style="padding: 0; width:400px; height:400px; background:#000; justify-content: center; align-items:center;">
-                <img src="./pc.png" style="width:100%; height: 100%; object-fit:cover;filter:brightness(0.3) contrast(2);">
-                <div style="position:absolute; color: red; font-size: 48px;text-shadow: 0 0 20px red; animation: flicker 0.1s infinite;">
-                    FATAL ERROR: YOU.EXE was not found.
-                </div>
-        </div>
-    </body>
-</html>
+        </body>
+    </html>
